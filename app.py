@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from structures import Company, Player
 
 app = Flask(__name__)
@@ -19,7 +19,7 @@ def update_company(company_name:str, methods=["POST"]):
 
 @app.route("/")
 def index():
-    return "Hello, world"
+    return render_template('index.html')
 
 
     """
@@ -44,3 +44,7 @@ def index():
                 history: list[tuple(str, float, float)] # (name, bought_for, sold_for)
             }
     """
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
