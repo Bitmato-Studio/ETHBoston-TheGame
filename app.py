@@ -1,7 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from structures import Company, Player
 
 app = Flask(__name__)
+
+# Initialize DUMMY company data
+companies = [
+    {'name': 'Company A', 'value': 100.0, 'clicks': 0},
+    {'name': 'Company B', 'value': 200.0, 'clicks': 0},
+    {'name': 'Company C', 'value': 300.0, 'clicks': 0}
+]
 
 @app.route("/api/company/<company_name>")
 def get_company(company_name:str):
@@ -17,9 +24,20 @@ def update_company(company_name:str, methods=["POST"]):
     return f"Update Data for: {company_name}"
     
 
+# FRONT-END ROUTES
+
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('index.html', companies=companies)
+
+@app.route('/vote', methods=['POST'])
+def vote():
+    company_name = request.form.get('company')
+    for company in companies:
+        if company['name'] == company_name:
+            company['clicks'] += 1
+            break
+    return redirect(url_for('index'))
 
 
     """
