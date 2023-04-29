@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for
 from structures import Company, Player
 
 app = Flask(__name__)
@@ -61,15 +61,25 @@ def index():
 
     return render_template('index.html', companies=sorted_companies, player=player, holdings_with_value=holdings_with_value)
 
+def update_vote_count(company_name):
+    # Find the company with the matching name
+    company = next((c for c in companies if c['name'] == company_name), None)
+    if company:
+        # Increment the vote count for the company
+        company['clicks'] += 1
+        # Return the updated vote count
+        return company['clicks']
+    return None
+
 @app.route('/vote', methods=['POST']) #authored by: @pshroff 
 def vote():
-    company_name = request.form.get('company')
-    for company in companies:
-        if company['name'] == company_name:
-            company['clicks'] += 1
-            break
-    return redirect(url_for('index'))
-
+    company_name = request.form['company']
+    # Update the vote count for the company
+    updated_vote_count = update_vote_count(company_name)
+    if updated_vote_count is not None:
+        return jsonify({'vote_count': updated_vote_count})
+    else:
+        return jsonify({'error': 'Company not found'}), 404
 
 @app.route('/trade', methods=['POST']) #authored by: @pshroff 
 def trade():
@@ -124,7 +134,6 @@ def trade():
                 history: list[tuple(str, int, int)] # (name, bought_for, sold_for)
             }
     """
-
 
 if __name__ == '__main__':
     app.run(debug=True)

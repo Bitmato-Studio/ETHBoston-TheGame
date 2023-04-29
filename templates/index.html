@@ -106,13 +106,13 @@
                     <h2 class="text-2xl font-bold mb-4">Vote for Companies</h2>
                     <div class="floating-container">
                         {% for company in companies %}
-                            <form method="POST" action="/vote" class="floating-button" style="top: {{ loop.index * 10 }}px; left: {{ loop.index * 20 }}px;">
+                            <form method="POST" action="/vote" class="floating-button" id="vote-form-{{ loop.index }}" style="top: {{ loop.index * 10 }}px; left: {{ loop.index * 20 }}px;">
                                 <input type="hidden" name="company" value="{{ company.name }}">
                                 <button type="submit" class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-xs leading-tight px-1">
                                     <div class="text-center">
-                                        <div>{{ company.name }}: {{ company.clicks }}</div>
+                                        <div>{{ company.name }}: <span class="vote-count">{{ company.clicks }}</span></div>
                                     </div>
-                                </button>
+                                </button>                                
                             </form>
                         {% endfor %}
                     </div>
@@ -131,7 +131,28 @@
                             button.style.transform = `translate(${randomX}px, ${randomY}px)`;
                         }, 5000);
                     });
+
+                    // Submit the form asynchronously
+                    buttons.forEach(button => {
+                        button.addEventListener('submit', (event) => {
+                            event.preventDefault(); // Prevent default form submission behavior
+                            const formData = new FormData(event.target);
+                            fetch(event.target.action, {
+                                method: 'POST',
+                                body: formData
+                            }).then(response => {
+                                return response.json();
+                            }).then(data => {
+                                // Update the vote count displayed in the bubble
+                                const voteCountElement = button.querySelector('.vote-count');
+                                voteCountElement.textContent = data.vote_count;
+                            }).catch(error => {
+                                // Handle error
+                            });
+                        });
+                    });
                 </script>
+
 
             </div>
         </div>
