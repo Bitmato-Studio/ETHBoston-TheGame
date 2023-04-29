@@ -1,65 +1,38 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
+from datahandler import PersistentDataHandler
 from structures import Company, Player
-
 app = Flask(__name__)
 
+handler = PersistentDataHandler("somefile.json")
+
 # Initialize the DUMMY player
-player = Player("John Doe")
+player = handler.create_player("John Doe")
 
 # Initialize company data - FOR 14 Companies = 14 Sponsors
-companies = [
-    {'name': 'Company A', 'value': 100.0, 'clicks': 0, 'total_shares': 1000},
-    {'name': 'Company B', 'value': 200.0, 'clicks': 0, 'total_shares': 2000},
-    {'name': 'Company C', 'value': 300.0, 'clicks': 0, 'total_shares': 1500},
-    {'name': 'Company D', 'value': 400.0, 'clicks': 0, 'total_shares': 3000},
-    {'name': 'Company E', 'value': 250.0, 'clicks': 0, 'total_shares': 2500},
-    {'name': 'Company F', 'value': 350.0, 'clicks': 0, 'total_shares': 1200},
-    {'name': 'Company G', 'value': 175.0, 'clicks': 0, 'total_shares': 500},
-    {'name': 'Company H', 'value': 450.0, 'clicks': 0, 'total_shares': 600},
-    {'name': 'Company I', 'value': 125.0, 'clicks': 0, 'total_shares': 1800},
-    {'name': 'Company J', 'value': 275.0, 'clicks': 0, 'total_shares': 1400},
-    {'name': 'Company K', 'value': 320.0, 'clicks': 0, 'total_shares': 2300},
-    {'name': 'Company L', 'value': 210.0, 'clicks': 0, 'total_shares': 1700},
-    {'name': 'Company M', 'value': 190.0, 'clicks': 0, 'total_shares': 900},
-    {'name': 'Company N', 'value': 220.0, 'clicks': 0, 'total_shares': 2600}
-]
-
-
-@app.route("/api/company/<company_name>")
-def get_company(company_name:str):
-    return f"Got data for company! {company_name}"
-
-@app.route("/api/player/<player_name>")
-def get_player(player_name:str):
-    return f"Got data for player! {player_name}"
-
-@app.route("/api/update/<company_name>")
-def update_company(company_name:str, methods=["POST"]):
-    ## TODO: Handle the request
-    return f"Update Data for: {company_name}"
-
+import random
+[handler.add_company(f"Company {i}", random.randint(0, 5000), random.randint(0, 2500)) for i in range(0, 14)]
 
 @app.route('/') #authored by: @pshroff 
 def index():
-    sorted_companies = sorted(companies, key=lambda x: x['value'], reverse=True)
+    sorted_companies = sorted(handler.data[0].values(), key=lambda x: x.value, reverse=True)
 
     # Calculate the total value of shares for each holding
     holdings_with_value = []
-    for company_name, shares in player.current_holding.items():
-        company = next((c for c in companies if c['name'] == company_name), None)
-        total_value = shares * company['value']
+    for company_name, shares in player.holdings.items():
+        company = handler.get_company(company_name)
+        total_value = shares * company.value
         holdings_with_value.append((company_name, shares, total_value))
 
-    return render_template('index.html', companies=sorted_companies, player=player, holdings_with_value=holdings_with_value)
+    return render_template('index.html', companies=sorted_companies, player=player.dict(), holdings_with_value=holdings_with_value)
 
 def update_vote_count(company_name):
     # Find the company with the matching name
-    company = next((c for c in companies if c['name'] == company_name), None)
+    company = handler.get_company(company_name)
     if company:
         # Increment the vote count for the company
-        company['clicks'] += 1
+        company.clicks += 1
         # Return the updated vote count
-        return company['clicks']
+        return company.clicks
     return None
 
 @app.route('/vote', methods=['POST']) #authored by: @pshroff 
@@ -78,53 +51,22 @@ def trade():
     action = request.form.get('action')
     shares = int(request.form.get('shares'))
 
-    company = next((c for c in companies if c['name'] == company_name), None)
+    company = handler.get_company(company_name)
 
     if action == "Buy":
-        cost = company['value'] * shares
-        if player.cash >= cost and company['total_shares'] >= shares:
-            player.cash -= cost
-            player.portfolio_value += cost
-            player.current_holding[company_name] = player.current_holding.get(company_name, 0) + shares
-            company['total_shares'] -= shares
+        cost = company.value * shares
+        if player.cash >= cost and company.total_shares >= shares:
+            handler.new_holdings(player.name, company.name, shares, cost)
+            
     elif action == "Sell":
-        current_shares = player.current_holding.get(company_name, 0)
+        current_shares = player.holdings.get(company_name, None)
         if current_shares >= shares:
-            value_per_share = company['value']
-            total_value = value_per_share * shares
-            player.cash += total_value
-            player.portfolio_value -= total_value
-            player.current_holding[company_name] -= shares
-            if player.current_holding[company_name] == 0:
-                del player.current_holding[company_name]
-            company['total_shares'] += shares
+            handler.sell_holdings(player.name, company_name, shares)
 
     return redirect(url_for('index'))
 
-
-    """
-        Data Structure:
-            Update: {
-                company_name:str
-                player_name:str
-                action: str ("Sell" || "Buy")
-            }
-        
-            Company: {
-                name: str
-                value: int
-                clicks: int
-                total_shares: int
-            }
-            
-            Player: {
-                name: str
-                cash: int
-                portfolio_value: int
-                current_holding: list[tuple[str, int]] # (name, bought_for)
-                history: list[tuple(str, int, int)] # (name, bought_for, sold_for)
-            }
-    """
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    try:
+        app.run(debug=True)
+    except KeyboardInterrupt:
+        handler.write()

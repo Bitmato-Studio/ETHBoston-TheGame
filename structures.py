@@ -3,7 +3,7 @@ from dataclasses import dataclass, field, asdict
 @dataclass
 class Company:
     name: str    ## Name of the company
-    price: float ## Current price of the stock
+    value: float ## Current price of the stock
     clicks: int  ## Total people who have ever clicked it
     total_shares: int ## Total shares
     
@@ -11,7 +11,7 @@ class Company:
     def from_dict(data:dict) -> object:
         return Company(
             data['name'],
-            data['price'],
+            data['value'],
             data['clicks'],
             data['total_shares']
         )
@@ -26,10 +26,10 @@ class Player:
     portfolio_value: float = 0 ## Total value with shares
     ## What the player is currently holding
     ## (Name, total_shares)
-    holdings: list[tuple[str, int]] = field(default_factory=list)
+    holdings: dict[tuple[str, int]] = field(default_factory=dict)
     ## What the player has held
     ## (Name, bought_for, sold_for)
-    history: list[tuple[str, float, float]] = field(default_factory=list)
+    history: dict[str, tuple[float, float]] = field(default_factory=dict)
     
     @staticmethod
     def from_dict(data:dict) -> object:

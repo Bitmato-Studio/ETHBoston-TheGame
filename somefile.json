@@ -1,0 +1,97 @@
+[
+  [
+    {
+      "name": "Company 0",
+      "value": "4048",
+      "clicks": "0",
+      "total_shares": "2409"
+    },
+    {
+      "name": "Company 1",
+      "value": "3374",
+      "clicks": "0",
+      "total_shares": "1465"
+    },
+    {
+      "name": "Company 2",
+      "value": "3929",
+      "clicks": "0",
+      "total_shares": "1325"
+    },
+    {
+      "name": "Company 3",
+      "value": "521",
+      "clicks": "0",
+      "total_shares": "184"
+    },
+    {
+      "name": "Company 4",
+      "value": "3399",
+      "clicks": "0",
+      "total_shares": "1257"
+    },
+    {
+      "name": "Company 5",
+      "value": "3439",
+      "clicks": "0",
+      "total_shares": "552"
+    },
+    {
+      "name": "Company 6",
+      "value": "4985",
+      "clicks": "0",
+      "total_shares": "2042"
+    },
+    {
+      "name": "Company 7",
+      "value": "2871",
+      "clicks": "0",
+      "total_shares": "1702"
+    },
+    {
+      "name": "Company 8",
+      "value": "2599",
+      "clicks": "0",
+      "total_shares": "1258"
+    },
+    {
+      "name": "Company 9",
+      "value": "544",
+      "clicks": "0",
+      "total_shares": "2121"
+    },
+    {
+      "name": "Company 10",
+      "value": "2812",
+      "clicks": "0",
+      "total_shares": "2051"
+    },
+    {
+      "name": "Company 11",
+      "value": "3494",
+      "clicks": "0",
+      "total_shares": "1864"
+    },
+    {
+      "name": "Company 12",
+      "value": "1837",
+      "clicks": "0",
+      "total_shares": "191"
+    },
+    {
+      "name": "Company 13",
+      "value": "1686",
+      "clicks": "0",
+      "total_shares": "2422"
+    }
+  ],
+  [
+    {
+      "name": "John Doe",
+      "cash": "73693",
+      "portfolio_value": "26307",
+      "holdings": "{'Company 6': 3, 'Company 11': 1, 'Company 2': 2}",
+      "history": "{}"
+    }
+  ]
+]
