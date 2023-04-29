@@ -17,7 +17,7 @@ class Company:
         )
     
     def dict(self):
-        return {k: str(v) for k, v in asdict(self).items()}
+        return {k: v for k, v in asdict(self).items()}
     
 @dataclass
 class Player:
@@ -43,4 +43,4 @@ class Player:
         )
     
     def dict(self):
-        return {k: str(v) for k, v in asdict(self).items()}
+        return {k: v for k, v in asdict(self).items()}

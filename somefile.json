@@ -2,96 +2,96 @@
   [
     {
       "name": "Company 0",
-      "value": "4048",
-      "clicks": "0",
-      "total_shares": "2409"
+      "value": 2298,
+      "clicks": 0,
+      "total_shares": 2076
     },
     {
       "name": "Company 1",
-      "value": "3374",
-      "clicks": "0",
-      "total_shares": "1465"
+      "value": 1399,
+      "clicks": 0,
+      "total_shares": 1149
     },
     {
       "name": "Company 2",
-      "value": "3929",
-      "clicks": "0",
-      "total_shares": "1325"
+      "value": 951,
+      "clicks": 0,
+      "total_shares": 922
     },
     {
       "name": "Company 3",
-      "value": "521",
-      "clicks": "0",
-      "total_shares": "184"
+      "value": 906,
+      "clicks": 0,
+      "total_shares": 1558
     },
     {
       "name": "Company 4",
-      "value": "3399",
-      "clicks": "0",
-      "total_shares": "1257"
+      "value": 4569,
+      "clicks": 0,
+      "total_shares": 1795
     },
     {
       "name": "Company 5",
-      "value": "3439",
-      "clicks": "0",
-      "total_shares": "552"
+      "value": 3104,
+      "clicks": 0,
+      "total_shares": 2206
     },
     {
       "name": "Company 6",
-      "value": "4985",
-      "clicks": "0",
-      "total_shares": "2042"
+      "value": 2946,
+      "clicks": 0,
+      "total_shares": 305
     },
     {
       "name": "Company 7",
-      "value": "2871",
-      "clicks": "0",
-      "total_shares": "1702"
+      "value": 1859,
+      "clicks": 0,
+      "total_shares": 2150
     },
     {
       "name": "Company 8",
-      "value": "2599",
-      "clicks": "0",
-      "total_shares": "1258"
+      "value": 1707,
+      "clicks": 0,
+      "total_shares": 882
     },
     {
       "name": "Company 9",
-      "value": "544",
-      "clicks": "0",
-      "total_shares": "2121"
+      "value": 2362,
+      "clicks": 0,
+      "total_shares": 1251
     },
     {
       "name": "Company 10",
-      "value": "2812",
-      "clicks": "0",
-      "total_shares": "2051"
+      "value": 3913,
+      "clicks": 0,
+      "total_shares": 1398
     },
     {
       "name": "Company 11",
-      "value": "3494",
-      "clicks": "0",
-      "total_shares": "1864"
+      "value": 2861,
+      "clicks": 0,
+      "total_shares": 2400
     },
     {
       "name": "Company 12",
-      "value": "1837",
-      "clicks": "0",
-      "total_shares": "191"
+      "value": 1348,
+      "clicks": 0,
+      "total_shares": 1523
     },
     {
       "name": "Company 13",
-      "value": "1686",
-      "clicks": "0",
-      "total_shares": "2422"
+      "value": 1971,
+      "clicks": 0,
+      "total_shares": 893
     }
   ],
   [
     {
       "name": "John Doe",
-      "cash": "73693",
-      "portfolio_value": "26307",
-      "holdings": "{'Company 6': 3, 'Company 11': 1, 'Company 2': 2}",
-      "history": "{}"
+      "cash": 100000,
+      "portfolio_value": 0,
+      "holdings": {},
+      "history": {}
     }
   ]
 ]

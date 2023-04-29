@@ -86,7 +86,6 @@ class PersistentDataHandler:
                 ], writer, indent=2)
             
     def write_handler(self, write_delay:float):
-        ## TODO: Timed writes
         
         while True:
             time.sleep(write_delay)
