@@ -3,15 +3,6 @@ from structures import Company, Player
 
 app = Flask(__name__)
 
-# Define the Player class
-class Player:
-    def __init__(self, name):
-        self.name = name
-        self.cash = 100000
-        self.portfolio_value = 0
-        self.current_holding = {}
-        self.history = []
-
 # Initialize the DUMMY player
 player = Player("John Doe")
 
