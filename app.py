@@ -1,12 +1,9 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for, make_response
 from datahandler import PersistentDataHandler
 from structures import Company, Player
 app = Flask(__name__)
 
 handler = PersistentDataHandler("somefile.json")
-
-# Initialize the DUMMY player
-player = handler.create_player("John Doe")
 
 # Initialize company data - FOR 14 Companies = 14 Sponsors
 import random
@@ -14,16 +11,20 @@ import random
 
 @app.route('/') #authored by: @pshroff 
 def index():
+    user_id = request.cookies.get("user_id", None)
+    player = handler.get_player(user_id)
     sorted_companies = sorted(handler.data[0].values(), key=lambda x: x.value, reverse=True)
 
     # Calculate the total value of shares for each holding
     holdings_with_value = []
-    for company_name, shares in player.holdings.items():
-        company = handler.get_company(company_name)
-        total_value = shares * company.value
-        holdings_with_value.append((company_name, shares, total_value))
+    
+    if player:
+        for company_name, shares in player.holdings.items():
+            company = handler.get_company(company_name)
+            total_value = shares * company.value
+            holdings_with_value.append((company_name, shares, total_value))
 
-    return render_template('index.html', companies=sorted_companies, player=player.dict(), holdings_with_value=holdings_with_value)
+    return render_template('index.html', companies=sorted_companies, player=player.dict() if player else Player("None", 0, 0), holdings_with_value=holdings_with_value)
 
 def update_vote_count(company_name):
     # Find the company with the matching name
@@ -35,6 +36,10 @@ def update_vote_count(company_name):
         return company.clicks
     return None
 
+@app.route("/login/<wallet>", methods=["POST"])
+def login(wallet:str):
+    handler.create_player(wallet)
+
 @app.route('/vote', methods=['POST']) #authored by: @pshroff 
 def vote():
     company_name = request.form['company']
@@ -45,8 +50,14 @@ def vote():
     else:
         return jsonify({'error': 'Company not found'}), 404
 
-@app.route('/trade', methods=['POST']) #authored by: @pshroff 
-def trade():
+@app.route('/trade/player_id', methods=['POST']) #authored by: @pshroff 
+def trade(player_id:str):
+    
+    player = handler.get_player(player_id)
+    
+    if not player:
+        return redirect(url_for('index'))
+    
     company_name = request.form.get('company')
     action = request.form.get('action')
     shares = int(request.form.get('shares'))

@@ -25,10 +25,8 @@
 </head>
 <body class="bg-gray-100 font-sans antialiased">
 
-    <div class="row">
-        <h1 class="col-m-8 text-4xl font-bold my-8 text-center">Stock Portfolio App</h1>
-        <button class="btn-primary col-m-8">Connect Wallet</button>
-    </div>
+    <h1 class="text-4xl font-bold my-8 text-center">Stock Portfolio App</h1>
+    <button class="btn btn-primary" onClick="login_metamask">Connect Wallet</button>
     <div class="container mx-auto">
         <div class="flex">
             <!-- Company Prices Section -->
@@ -155,11 +153,32 @@
                     });
                 </script>
 
+                <script>
+                    
+                let login_metamask = async () => {
+                    eth = window.ethereum;
+
+                    if (!eth) {
+                        console.log("MetaMask Wallet not found!");
+                        alert("Please install a metamask wallet to use this!");
+                        return;
+                    }
+
+                    let wallets = await window.ethereum.request({ method: 'eth_accounts'});
+
+                    if (wallets.length === 0) {
+                        alert("There was no wallets found!");
+                    }
+
+                    console.log("Wallet address: ", wallets[0]);
+                }
+
+                </script>
+
 
             </div>
         </div>
     </div>
 
 </body>
-<script href="static/js/index.js"/>
 </html>

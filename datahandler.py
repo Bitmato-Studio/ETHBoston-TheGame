@@ -84,7 +84,11 @@ class PersistentDataHandler:
                     [dt.dict() for dt in self.data[0].values()],
                     [dt.dict() for dt in self.data[1].values()]
                 ], writer, indent=2)
-            
+    
+    ## Just some cleanup
+    def __del__(self):
+        self.write()
+    
     def write_handler(self, write_delay:float):
         
         while True:
