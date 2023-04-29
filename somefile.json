@@ -27,7 +27,7 @@
     {
       "name": "Company 4",
       "value": 4569,
-      "clicks": 0,
+      "clicks": 2,
       "total_shares": 1795
     },
     {
@@ -39,7 +39,7 @@
     {
       "name": "Company 6",
       "value": 2946,
-      "clicks": 0,
+      "clicks": 1,
       "total_shares": 305
     },
     {
@@ -63,13 +63,13 @@
     {
       "name": "Company 10",
       "value": 3913,
-      "clicks": 0,
+      "clicks": 1,
       "total_shares": 1398
     },
     {
       "name": "Company 11",
       "value": 2861,
-      "clicks": 0,
+      "clicks": 1,
       "total_shares": 2400
     },
     {

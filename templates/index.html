@@ -22,12 +22,16 @@
             padding: 1rem;
         }
     </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel= "stylesheet">
 </head>
 <body class="bg-gray-100 font-sans antialiased">
 
     <h1 class="text-4xl font-bold my-8 text-center">Stock Portfolio App</h1>
-    <button onClick="login_metamask()">Connect Wallet</button>
+
     <div class="container mx-auto">
+        <div class="text-right">
+            <button type="button" class="btn btn-primary" onClick="login_metamask()">Connect Wallet</button>
+        </div>
         <div class="flex">
             <!-- Company Prices Section -->
             <div class="w-1/2 mr-8">
@@ -38,16 +42,23 @@
                             <th class="custom-border">Company</th>
                             <th class="custom-border">Price</th>
                             <th class="custom-border">Total Shares</th>
-                            <th class="custom-border">Total Market Cap</th>
+                            <!-- <th class="custom-border">Total Market Cap</th> -->
                         </tr>
                     </thead>
                     <tbody>
                         {% for company in companies %}
                             <tr>
-                                <td class="custom-border">{{ company.name }}</td>
+                                <!-- <td class="custom-border">{{ company.name }}</td> -->
+                                <!-- <td style="background-image: url('static/logos/bostondao100.png');  background-size: cover;"></td> -->
+                                <td style="background-image: url('{{ company.logo }}'); background-size: auto 100%;background-position: center;
+                                background-repeat: no-repeat;"></td>
+
+
+                                
+
                                 <td class="custom-border">{{ company.value }}</td>
                                 <td class="custom-border">{{ company.total_shares }}</td>
-                                <td class="custom-border">{{ company.value * company.total_shares }}</td>
+                                <!-- <td class="custom-border">{{ company.value * company.total_shares }}</td> -->
                             </tr>
                         {% endfor %}
                     </tbody>

@@ -44,11 +44,11 @@ class PersistentDataHandler:
         self.data[1][name] = new_player
         return new_player
     
-    def add_company(self, name:str, value:float, total_shares:int) -> Company:
+    def add_company(self, name:str, logo:str, value:float, total_shares:int) -> Company:
         if (company := self.get_company(name)):
             return company
         
-        new_company = Company(name, value, 0, total_shares)
+        new_company = Company(name, logo, value, 0, total_shares)
         self.data[0][name] = new_company
         return new_company
     
