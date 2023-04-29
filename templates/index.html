@@ -16,25 +16,89 @@
 
 <body>
 
+    <!-- Add JavaScript to refresh the page on any click action 
+    <script>
+        document.addEventListener('click', function() {
+            location.reload();
+        });
+    </script> -->
+
     <h1 class="mb-4">Stock Portfolio App</h1>
 
     <div class="section">
         <h2>Company Prices</h2>
-        <ul class="list-group mb-4">
-            <li class="list-group-item">Company A: $100</li>
-            <li class="list-group-item">Company B: $200</li>
-            <li class="list-group-item">Company C: $300</li>
-        </ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Price</th>
+                    <th>Total Shares</th>
+                    <th>Total Market Cap</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for company in companies %}
+                    <tr>
+                        <td>{{ company.name }}</td>
+                        <td>{{ company.value }}</td>
+                        <td>{{ company.total_shares }}</td>
+                        <td>{{ company.value * company.total_shares }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
+    <!-- Add trade form -->
+    <div class="section">
+        <h2>Trade Shares</h2>
+        <form method="POST" action="/trade">
+            <div class="form-group">
+                <label for="company">Company</label>
+                <select class="form-control" id="company" name="company">
+                    {% for company in companies %}
+                        <option value="{{ company.name }}">{{ company.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="shares">Number of shares</label>
+                <input type="number" class="form-control" id="shares" name="shares" min="1">
+            </div>
+            <div class="form-group">
+                <label for="action">Action</label>
+                <select class="form-control" id="action" name="action">
+                    <option value="Buy">Buy</option>
+                    <option value="Sell">Sell</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Update user portfolio -->
     <div class="section">
         <h2>User Portfolio</h2>
-        <ul class="list-group mb-4">
-            <li class="list-group-item">Company A: 10 shares</li>
-            <li class="list-group-item">Company B: 5 shares</li>
-            <li class="list-group-item">Company C: 2 shares</li>
-        </ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Shares</th>
+                    <th>Total Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for holding in holdings_with_value %}
+                    <tr>
+                        <td>{{ holding[0] }}</td>
+                        <td>{{ holding[1] }}</td>
+                        <td>{{ holding[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+
 
     <div class="section">
         <h2>Vote for Companies</h2>
