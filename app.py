@@ -35,8 +35,8 @@ handler.add_company("techstars", "/static/logos/techstars.png", random.uniform(0
 handler.add_company("inflection", "/static/logos/inflection.png", random.uniform(0.5, 1.5), 3_000)
 
 handler.add_company("Bitmatoes", '/static/logos/bitmato100.png', random.uniform(0.25, 0.5), 1_500)
+handler.add_company("bbu", '/static/logos/bbu.png', random.uniform(0.25, 0.5), 1_500)
 
-#handler.add_company("bbu", '/static/logos/bbu.png')
 
 @app.route('/') #authored by: @pshroff 
 def index():
