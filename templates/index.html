@@ -38,9 +38,9 @@
                             <tr>
                                 <!-- <td class="custom-border">{{ company.name }}</td> -->
                                 <!-- <td style="background-image: url('static/logos/bostondao100.png');  background-size: cover;"></td> -->
-                                <td class="custom-border"> <img src="{{ company.logo }}" height="75" width="75"/> {{ company.name }} </td>
-                                <td class="custom-border">{{ company.value }}</td>
-                                <td class="custom-border">{{ company.total_shares }}</td>
+                                <td class="custom-border" id="{{ company.name }}-logo"> <img src="{{ company.logo }}" height="75" width="75"/> {{ company.name }} </td>
+                                <td class="custom-border" id="{{ company.name }}-value">{{ company.value }}</td>
+                                <td class="custom-border" id="{{ company.name }}-total-shares">{{ company.total_shares }}</td>
                                 <!-- <td class="custom-border">{{ company.value * company.total_shares }}</td> -->
                             </tr>
                         {% endfor %}
@@ -52,24 +52,22 @@
             <div class="w-1/2">
                 <div class="mb-8">
                     <h2 class="text-2xl font-bold mb-4">Trade Shares</h2>
-                    <form method="POST" action="/trade">
-                        <div class="mb-3">
-                            <label for="company" class="font-semibold">Company</label>
-                            <select class="w-full border border-gray-300 p-2" id="company" name="company">
-                                {% for company in companies %}
-                                    <option value="{{ company.name }}">{{ company.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="shares" class="font-semibold">Number of shares</label>
-                            <input type="number" class="w-full border border-gray-300 p-2" id="shares" name="shares" min="1">
-                        </div>
-                        <div class="flex space-x-4">
-                            <button type="submit" name="action" value="Buy" class="w-1/2 py-2 px-4 bg-green-600 text-white font-bold rounded hover:bg-green-500">Buy</button>
-                            <button type="submit" name="action" value="Sell" class="w-1/2 py-2 px-4 bg-red-600 text-white font-bold rounded hover:bg-red-500">Sell</button>
-                        </div>
-                    </form>
+                    <div class="mb-3">
+                        <label for="company" class="font-semibold">Company</label>
+                        <select class="w-full border border-gray-300 p-2" id="company" name="company">
+                            {% for company in companies %}
+                                <option value="{{ company.name }}">{{ company.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="shares" class="font-semibold">Number of shares</label>
+                        <input type="number" class="w-full border border-gray-300 p-2" id="shares" id="shares" min="1">
+                    </div>
+                    <div class="flex space-x-4">
+                        <button onclick="doTrade(true)"class="w-1/2 py-2 px-4 bg-green-600 text-white font-bold rounded hover:bg-green-500">Buy</button>
+                        <button onclick="doTrade(false)" class="w-1/2 py-2 px-4 bg-red-600 text-white font-bold rounded hover:bg-red-500">Sell</button>
+                    </div>
                 </div>
     
                 <!-- User Portfolio Section -->
@@ -80,15 +78,13 @@
                             <tr>
                                 <th class="custom-border">Company</th>
                                 <th class="custom-border">Shares</th>
-                                <th class="custom-border">Total Value</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="player-holdings">
                             {% for holding in holdings_with_value %}
                                 <tr>
                                     <td class="custom-border">{{ holding[0] }}</td>
                                     <td class="custom-border">{{ holding[1] }}</td>
-                                    <td class="custom-border">{{ holding[2] }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

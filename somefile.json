@@ -19,7 +19,7 @@
       "logo": "/static/logos/bitmato100.png",
       "value": 4021,
       "clicks": 6,
-      "total_shares": 2052
+      "total_shares": 2046
     },
     {
       "name": "Company 3",
@@ -40,7 +40,7 @@
       "logo": "/static/logos/bitmato100.png",
       "value": 4411,
       "clicks": 4,
-      "total_shares": 672
+      "total_shares": 661.0
     },
     {
       "name": "Company 6",
@@ -96,8 +96,20 @@
       "logo": "/static/logos/bitmato100.png",
       "value": 3217,
       "clicks": 12,
-      "total_shares": 267
+      "total_shares": 259.5
     }
   ],
-  []
+  [
+    {
+      "name": "0x3b9ed519d2a33f58c2610ca107c7afb3af1f35be",
+      "cash": 3225.5,
+      "portfolio_value": 96774.5,
+      "holdings": {
+        "Company 5": 11.0,
+        "Company 2": 6,
+        "Company 13": 7.5
+      },
+      "history": {}
+    }
+  ]
 ]

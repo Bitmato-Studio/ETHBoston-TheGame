@@ -50,6 +50,12 @@ def get_static(static_type:str, filename:str):
 @app.route("/login/<wallet>", methods=["POST"])
 def login(wallet:str):
     handler.create_player(wallet)
+    return "SUCCESS!"
+
+@app.route("/player/<wallet>")
+def get_player(wallet:str):
+    ply = handler.get_player(wallet)
+    return jsonify(ply.dict())
 
 @app.route('/vote', methods=['POST']) #authored by: @pshroff 
 def vote():
@@ -61,31 +67,38 @@ def vote():
     else:
         return jsonify({'error': 'Company not found'}), 404
 
-@app.route('/trade/player_id', methods=['POST']) #authored by: @pshroff 
-def trade(player_id:str):
-    
+@app.route('/gamestate')
+def getGameState():
+    return jsonify(
+            {name: c.dict() for name, c in handler.data[0].items()}
+        )
+
+@app.route('/trade/<player_id>/<mode>/<shares>/<company_name>', methods=['POST']) #authored by: @pshroff 
+def trade(player_id:str, mode:str, shares:float, company_name:str):
     player = handler.get_player(player_id)
     
     if not player:
-        return redirect(url_for('index'))
+        return jsonify(
+            {name: c.dict() for name, c in handler.data[0].items()}
+        )
     
-    company_name = request.form.get('company')
-    action = request.form.get('action')
-    shares = int(request.form.get('shares'))
+    shares = float(shares)
 
     company = handler.get_company(company_name)
 
-    if action == "Buy":
+    if mode == "buy":
         cost = company.value * shares
         if player.cash >= cost and company.total_shares >= shares:
             handler.new_holdings(player.name, company.name, shares, cost)
             
-    elif action == "Sell":
+    elif mode == "sell":
         current_shares = player.holdings.get(company_name, None)
         if current_shares >= shares:
             handler.sell_holdings(player.name, company_name, shares)
 
-    return redirect(url_for('index'))
+    return jsonify(
+            {name: c.dict() for name, c in handler.data[0].items()}
+        )
 
 if __name__ == '__main__':
     try:
