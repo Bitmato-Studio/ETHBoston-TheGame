@@ -117,10 +117,6 @@ function doTrade(isBuy) {
     });
 }
 
-/* `setInterval(() => { get_game_state(); get_player_data(); }, 2000);` is a function that is
-repeatedly calling the `get_game_state()` and `get_player_data()` functions every 2 seconds (2000
-milliseconds). This is used to update the game board and player data in real-time without the need
-for the user to manually refresh the page. */
 setInterval(() => {
     get_game_state();
     get_player_data();

@@ -54,6 +54,7 @@ class PersistentDataHandler:
     
     def new_holdings(self, player_name:str, company_name:str, shares:int, cost:float) -> NoReturn:
         player = self.get_player(player_name)
+        cmp = self.get_company(company_name)
         
         if company_name in player.holdings:
             player.holdings[company_name] += shares
@@ -62,7 +63,11 @@ class PersistentDataHandler:
     
         player.cash -= cost
         player.portfolio_value += cost
-        self.get_company(company_name).total_shares -= shares
+        
+        share_percent = shares/cmp.total_shares
+        cmp.total_shares -= shares
+        cmp.value *= shares * (share_percent + 0.1)
+        
 
     def sell_holdings(self, player_name:str, company_name:str, shares:int) -> NoReturn:
         cmp = self.get_company(company_name)
@@ -76,7 +81,10 @@ class PersistentDataHandler:
         player.holdings[company_name] -= shares
         if player.holdings[company_name] == 0:
             del player.holdings[company_name]
+            
+        share_percent = shares / cmp.total_shares
         cmp.total_shares += shares
+        cmp.value /= shares * (share_percent + 0.1)
     
     def write(self):
         with open(self.data_filename, "w") as writer:
