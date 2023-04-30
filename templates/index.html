@@ -99,9 +99,18 @@
                         {% for company in companies %}
                             <form method="POST" action="/vote" class="floating-button" id="vote-form-{{ loop.index }}" style="top: {{ loop.index * 10 }}px; left: {{ loop.index * 20 }}px;">
                                 <input type="hidden" name="company" value="{{ company.name }}">
-                                <button type="submit" class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-xs leading-tight px-1">
+                                <!-- <button type="submit" class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-xs leading-tight px-1"> -->
+                                <button type="submit" class="bg-white text-black w-16 h-16 rounded-full flex items-center justify-center text-xs leading-tight px-1">
                                     <div class="text-center">
-                                        <div>{{ company.name }}: <span class="vote-count">{{ company.clicks }}</span></div>
+                                        <!-- <img src="{{ company.logo }}" height="75" width="75"/> -->
+                                        <!-- <div style="background-image: url('{{ company.logo }}'); background-size: auto 100%;background-position: center;
+                                        background-repeat: no-repeat;"> -->
+                                        <div><img src="{{ company.logo }}" height="75" width="75"/>
+                                        <!-- {{ company.name }}:  -->
+                                        <!-- <span class="vote-count"> -->
+                                            <!-- {{ company.clicks }} -->
+                                        <!-- </span> -->
+                                        </div>
                                     </div>
                                 </button>                                
                             </form>
