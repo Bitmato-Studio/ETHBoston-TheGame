@@ -1,14 +1,41 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for, Response
+from flask import Flask, jsonify, render_template, request, Response
 from datahandler import PersistentDataHandler
-from structures import Company, Player
+from structures import Player
 import mimetypes
+import random
 app = Flask(__name__)
 
 handler = PersistentDataHandler("somefile.json")
 
-# Initialize company data - FOR 14 Companies = 14 Sponsors
-import random
-[handler.add_company(f"Company {i}", '/static/logos/bitmato100.png' , random.randint(0, 5000), random.randint(0, 2500)) for i in range(0, 14)]
+#[handler.add_company(f"Company {i}", '/static/logos/bitmato100.png' , random.randint(0, 5000), random.randint(0, 2500)) for i in range(0, 14)]
+
+"""
+    Base prices:
+        Large: 4-6 eth
+        medium 2-4 eth
+        small  0.5-1.5 eth
+        
+        powered 0.25-0.5 eth
+"""
+
+handler.add_company("QuickNode", '/static/logos/quicknode100.png', random.uniform(4, 6), 10_000)
+handler.add_company("Ceramic", "/static/logos/caramic100.png", random.uniform(2, 4), 6_000)
+handler.add_company("L1D", "/static/logos/l1d100.png", random.uniform(2, 4), 6_000)
+handler.add_company("Threshold", "/static/logos/threshhold.png", random.uniform(2, 4), 6_000)
+handler.add_company("Fidelity", "/static/logos/fidelity100.png", random.uniform(2, 4), 6_000)
+handler.add_company("Horizons", "/static/logos/horizons.png", random.uniform(0.5, 1.5), 3_000)
+
+handler.add_company("Horizons", "/static/logos/horizons.png", random.uniform(0.5, 1.5), 3_000)
+handler.add_company("Verse", "/static/logos/verse100.png", random.uniform(0.5, 1.5), 3_000)
+handler.add_company("Castle Island", "/static/logos/castleisland.png", random.uniform(0.5, 1.5), 3_000)
+handler.add_company("Concepts", "/static/logos/concepts100.png", random.uniform(0.5, 1.5), 3_000)
+handler.add_company("FileCoin Green", "/static/logos/filegreencoin.png", random.uniform(0.5, 1.5), 3_000)
+handler.add_company("techstars", "/static/logos/techstars.png", random.uniform(0.5, 1.5), 3_000)
+handler.add_company("inflection", "/static/logos/inflection.png", random.uniform(0.5, 1.5), 3_000)
+
+
+
+#handler.add_company("bbu", '/static/logos/bbu.png')
 
 @app.route('/') #authored by: @pshroff 
 def index():

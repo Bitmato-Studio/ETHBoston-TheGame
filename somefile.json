@@ -1,113 +1,96 @@
 [
   [
     {
-      "name": "Company 0",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 2508,
-      "clicks": 6,
-      "total_shares": 1081
-    },
-    {
-      "name": "Company 1",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 1571,
+      "name": "QuickNode",
+      "logo": "/static/logos/quicknode100.png",
+      "value": 5.4095685304940035,
       "clicks": 0,
-      "total_shares": 1928
+      "total_shares": 10000.0
     },
     {
-      "name": "Company 2",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 4021,
-      "clicks": 6,
-      "total_shares": 2046
-    },
-    {
-      "name": "Company 3",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 888,
+      "name": "Ceramic",
+      "logo": "/static/logos/caramic100.png",
+      "value": 3.149929815484363,
       "clicks": 0,
-      "total_shares": 2269
+      "total_shares": 6000
     },
     {
-      "name": "Company 4",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 2191,
-      "clicks": 5,
-      "total_shares": 703
-    },
-    {
-      "name": "Company 5",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 3437.8858625162125,
-      "clicks": 4,
-      "total_shares": 672.0
-    },
-    {
-      "name": "Company 6",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 1638,
+      "name": "L1D",
+      "logo": "/static/logos/l1d100.png",
+      "value": 3.931943206502949,
       "clicks": 0,
-      "total_shares": 1678
+      "total_shares": 6000
     },
     {
-      "name": "Company 7",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 592.2677658577586,
+      "name": "Threshold",
+      "logo": "/static/logos/threshhold.png",
+      "value": 2.0153898016036913,
       "clicks": 0,
-      "total_shares": 1441.0
+      "total_shares": 6000
     },
     {
-      "name": "Company 8",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 3651,
-      "clicks": 6,
-      "total_shares": 2403
-    },
-    {
-      "name": "Company 9",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 3599,
-      "clicks": 15,
-      "total_shares": 0
-    },
-    {
-      "name": "Company 10",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 2593,
-      "clicks": 1,
-      "total_shares": 123
-    },
-    {
-      "name": "Company 11",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 2198,
+      "name": "Fidelity",
+      "logo": "/static/logos/fidelity100.png",
+      "value": 2.240510388419703,
       "clicks": 0,
-      "total_shares": 2018
+      "total_shares": 6000
     },
     {
-      "name": "Company 12",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 2615,
-      "clicks": 2,
-      "total_shares": 1549
+      "name": "Horizons",
+      "logo": "/static/logos/horizons.png",
+      "value": 0.8646756664544014,
+      "clicks": 0,
+      "total_shares": 3000
     },
     {
-      "name": "Company 13",
-      "logo": "/static/logos/bitmato100.png",
-      "value": 3217,
-      "clicks": 12,
-      "total_shares": 259.5
+      "name": "Verse",
+      "logo": "/static/logos/verse100.png",
+      "value": 0.7980173516279185,
+      "clicks": 0,
+      "total_shares": 3000
+    },
+    {
+      "name": "Castle Island",
+      "logo": "/static/logos/castleisland.png",
+      "value": 1.2989404744604771,
+      "clicks": 0,
+      "total_shares": 3000
+    },
+    {
+      "name": "Concepts",
+      "logo": "/static/logos/concepts100.png",
+      "value": 1.120975649374662,
+      "clicks": 0,
+      "total_shares": 3000
+    },
+    {
+      "name": "FileCoin Green",
+      "logo": "/static/logos/filegreencoin.png",
+      "value": 0.7313731492776345,
+      "clicks": 0,
+      "total_shares": 3000
+    },
+    {
+      "name": "techstars",
+      "logo": "/static/logos/techstars.png",
+      "value": 1.1325325265141597,
+      "clicks": 0,
+      "total_shares": 3000
+    },
+    {
+      "name": "inflection",
+      "logo": "/static/logos/inflection.png",
+      "value": 0.8328603918639682,
+      "clicks": 0,
+      "total_shares": 3000
     }
   ],
   [
     {
       "name": "0x3b9ed519d2a33f58c2610ca107c7afb3af1f35be",
-      "cash": 116527.42435808467,
-      "portfolio_value": -16527.424358084667,
-      "holdings": {
-        "Company 2": 6,
-        "Company 13": 7.5
-      },
+      "cash": 441963.9782611771,
+      "portfolio_value": -341963.9782611771,
+      "holdings": {},
       "history": {}
     }
   ]

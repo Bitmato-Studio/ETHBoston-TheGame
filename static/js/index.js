@@ -44,13 +44,16 @@ function update_board(cmp_data) {
         let cvalue = document.getElementById(`${key}-value`);
         let ctotalshares = document.getElementById(`${key}-total-shares`);
 
-        cvalue.innerHTML = cmp_data[key].value;
+        cvalue.innerHTML = `Ξ${cmp_data[key].value}`;
         ctotalshares.innerHTML = cmp_data[key].total_shares;
     }
 }
 
 function update_player(player_data) {
     let holdings_table = document.getElementById("player-holdings");
+    let player_cash = document.getElementById("player-cash");
+
+    player_cash.innerHTML = `Ξ${player_data.cash}`;
 
     let playerHoldings = player_data.holdings;
     holdings_table.innerHTML = ""; // clear it out
