@@ -39,7 +39,7 @@ class PersistentDataHandler:
         if (player := self.get_player(name)):
             return player ## Just so other stuff can still work
         
-        new_player = Player(name)
+        new_player = Player(name, 10)
         
         self.data[1][name] = new_player
         return new_player

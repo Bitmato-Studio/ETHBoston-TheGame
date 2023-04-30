@@ -19,11 +19,12 @@ handler = PersistentDataHandler("somefile.json")
 """
 
 handler.add_company("QuickNode", '/static/logos/quicknode100.png', random.uniform(4, 6), 10_000)
+
 handler.add_company("Ceramic", "/static/logos/caramic100.png", random.uniform(2, 4), 6_000)
 handler.add_company("L1D", "/static/logos/l1d100.png", random.uniform(2, 4), 6_000)
 handler.add_company("Threshold", "/static/logos/threshhold.png", random.uniform(2, 4), 6_000)
 handler.add_company("Fidelity", "/static/logos/fidelity100.png", random.uniform(2, 4), 6_000)
-handler.add_company("Horizons", "/static/logos/horizons.png", random.uniform(0.5, 1.5), 3_000)
+handler.add_company("MoonBeam", "/static/logos/moonbeam100.png", random.uniform(2, 4), 6_000)
 
 handler.add_company("Horizons", "/static/logos/horizons.png", random.uniform(0.5, 1.5), 3_000)
 handler.add_company("Verse", "/static/logos/verse100.png", random.uniform(0.5, 1.5), 3_000)
@@ -33,7 +34,7 @@ handler.add_company("FileCoin Green", "/static/logos/filegreencoin.png", random.
 handler.add_company("techstars", "/static/logos/techstars.png", random.uniform(0.5, 1.5), 3_000)
 handler.add_company("inflection", "/static/logos/inflection.png", random.uniform(0.5, 1.5), 3_000)
 
-
+handler.add_company("Bitmatoes", '/static/logos/bitmato100.png', random.uniform(0.25, 0.5), 1_500)
 
 #handler.add_company("bbu", '/static/logos/bbu.png')
 
