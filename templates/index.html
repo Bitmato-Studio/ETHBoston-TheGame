@@ -72,8 +72,8 @@
     
                 <!-- User Portfolio Section -->
                 <div>
-                    <h2 class="text-2xl font-bold mb-4">User Portfolio</h2>
-                    <h3 class="text-2x1 font-bold mb-4" id="player-cash">Cash: Ξ0</h3>
+                    <h2 class="text-2xl font-bold mb-4">ETH Holdings</h2>
+                    <h3 class="text-2x1 font-bold mb-4" id="player-cash">Not Logged in!</h3>
                     <table class="w-full table-auto">
                         <thead>
                             <tr>
@@ -94,7 +94,7 @@
 
                 <!-- Vote for Companies Section -->
                 <div>
-                    <h2 class="text-2xl font-bold mb-4">Vote for Companies</h2>
+                    <h2 class="text-2xl font-bold mb-4">Market Share</h2>
                     <div class="floating-container">
                         {% for company in companies %}
                             <form method="POST" action="/vote" class="floating-button" id="vote-form-{{ loop.index }}" style="top: {{ loop.index * 10 }}px; left: {{ loop.index * 20 }}px;">

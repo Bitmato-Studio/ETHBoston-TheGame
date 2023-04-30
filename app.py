@@ -130,6 +130,6 @@ def trade(player_id:str, mode:str, shares:float, company_name:str):
 
 if __name__ == '__main__':
     try:
-        app.run(debug=True)
+        app.run(debug=True, port=80, host="0.0.0.0")
     except KeyboardInterrupt:
         handler.write()
