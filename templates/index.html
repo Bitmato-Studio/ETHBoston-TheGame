@@ -4,24 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Portfolio App</title>
+    <!-- Add jQuery (old but works)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- Add Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .floating-container {
-            position: relative;
-            overflow: hidden;
-            height: 200px;
-        }
-        .floating-button {
-            position: absolute;
-            transition: transform 5s linear;
-        }
-
-        .custom-border {
-            border: 1px solid #E5E7EB;
-            padding: 1rem;
-        }
-    </style>
+    <script src="/static/js/index.js"></script>
+    <link href="/static/css/styles.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel= "stylesheet">
 </head>
 <body class="bg-gray-100 font-sans antialiased">
@@ -30,11 +18,11 @@
 
     <div class="container mx-auto">
         <div class="text-right">
-            <button type="button" class="btn btn-primary" onClick="login_metamask()">Connect Wallet</button>
+            <button type="button" class="btn btn-primary" onClick="connectWalletHandler()" id="wallet_connect">Connect Wallet</button>
         </div>
         <div class="flex">
             <!-- Company Prices Section -->
-            <div class="w-1/2 mr-8">
+            <div class="w-1/2 mr-8 company-display">
                 <h2 class="text-2xl font-bold mb-4">Company Prices</h2>
                 <table class="w-full table-auto">
                     <thead>
@@ -50,12 +38,7 @@
                             <tr>
                                 <!-- <td class="custom-border">{{ company.name }}</td> -->
                                 <!-- <td style="background-image: url('static/logos/bostondao100.png');  background-size: cover;"></td> -->
-                                <td style="background-image: url('{{ company.logo }}'); background-size: auto 100%;background-position: center;
-                                background-repeat: no-repeat;"></td>
-
-
-                                
-
+                                <td class="custom-border"> <img src="{{ company.logo }}" height="75" width="75"/> {{ company.name }} </td>
                                 <td class="custom-border">{{ company.value }}</td>
                                 <td class="custom-border">{{ company.total_shares }}</td>
                                 <!-- <td class="custom-border">{{ company.value * company.total_shares }}</td> -->
@@ -163,29 +146,6 @@
                         });
                     });
                 </script>
-
-                <script>
-                    
-                let login_metamask = async () => {
-                    eth = window.ethereum;
-
-                    if (!eth) {
-                        console.log("MetaMask Wallet not found!");
-                        alert("Please install a metamask wallet to use this!");
-                        return;
-                    }
-
-                    let wallets = await window.ethereum.request({ method: 'eth_accounts'});
-
-                    if (wallets.length === 0) {
-                        alert("There was no wallets found!");
-                    }
-
-                    console.log("Wallet address: ", wallets[0]);
-                }
-
-                </script>
-
 
             </div>
         </div>

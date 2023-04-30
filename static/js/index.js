@@ -1,18 +1,28 @@
+function checkWalletIsConnected ()  {
+    const { ethereum } = window;
 
-let login_metamask = async () => {
-    eth = window.ethereum;
-
-    if (!eth) {
-        console.log("MetaMask Wallet not found!");
-        alert("Please install a metamask wallet to use this!");
+    if (!ethereum) {
+        console.log("Make sure you have Metamask installed!");
         return;
+    } else {
+        console.log("Wallet Exists!")
     }
+}
 
-    let wallets = await window.ethereum.request({ method: 'eth_accounts'});
+async function connectWalletHandler() {  
+    const { ethereum } = window;
 
-    if (wallets.length === 0) {
-        alert("There was no wallets found!");
+    if (!ethereum) {
+        alert("Please install Metamask!");
     }
-
-    console.log("Wallet address: ", wallets[0]);
+    try {
+        const accounts = await ethereum.request({ method: "eth_requestAccounts"});
+        console.log("Found an account! Address: ", accounts[0]);
+        btn = document.getElementById("wallet_connect");
+        btn.innerHTML = accounts[0];
+    } catch (err) {
+        console.log(err);
+        alert("There was an error!\n", err)
+    }
+    
 }

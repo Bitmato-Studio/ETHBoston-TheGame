@@ -2,96 +2,102 @@
   [
     {
       "name": "Company 0",
-      "value": 2298,
-      "clicks": 0,
-      "total_shares": 2076
+      "logo": "/static/logos/bitmato100.png",
+      "value": 2508,
+      "clicks": 6,
+      "total_shares": 1081
     },
     {
       "name": "Company 1",
-      "value": 1399,
+      "logo": "/static/logos/bitmato100.png",
+      "value": 1571,
       "clicks": 0,
-      "total_shares": 1149
+      "total_shares": 1928
     },
     {
       "name": "Company 2",
-      "value": 951,
-      "clicks": 0,
-      "total_shares": 922
+      "logo": "/static/logos/bitmato100.png",
+      "value": 4021,
+      "clicks": 6,
+      "total_shares": 2052
     },
     {
       "name": "Company 3",
-      "value": 906,
+      "logo": "/static/logos/bitmato100.png",
+      "value": 888,
       "clicks": 0,
-      "total_shares": 1558
+      "total_shares": 2269
     },
     {
       "name": "Company 4",
-      "value": 4569,
-      "clicks": 2,
-      "total_shares": 1795
+      "logo": "/static/logos/bitmato100.png",
+      "value": 2191,
+      "clicks": 5,
+      "total_shares": 703
     },
     {
       "name": "Company 5",
-      "value": 3104,
-      "clicks": 0,
-      "total_shares": 2206
+      "logo": "/static/logos/bitmato100.png",
+      "value": 4411,
+      "clicks": 4,
+      "total_shares": 672
     },
     {
       "name": "Company 6",
-      "value": 2946,
-      "clicks": 1,
-      "total_shares": 305
+      "logo": "/static/logos/bitmato100.png",
+      "value": 1638,
+      "clicks": 0,
+      "total_shares": 1678
     },
     {
       "name": "Company 7",
-      "value": 1859,
+      "logo": "/static/logos/bitmato100.png",
+      "value": 595,
       "clicks": 0,
-      "total_shares": 2150
+      "total_shares": 1441
     },
     {
       "name": "Company 8",
-      "value": 1707,
-      "clicks": 0,
-      "total_shares": 882
+      "logo": "/static/logos/bitmato100.png",
+      "value": 3651,
+      "clicks": 6,
+      "total_shares": 2403
     },
     {
       "name": "Company 9",
-      "value": 2362,
-      "clicks": 0,
-      "total_shares": 1251
+      "logo": "/static/logos/bitmato100.png",
+      "value": 3599,
+      "clicks": 15,
+      "total_shares": 0
     },
     {
       "name": "Company 10",
-      "value": 3913,
+      "logo": "/static/logos/bitmato100.png",
+      "value": 2593,
       "clicks": 1,
-      "total_shares": 1398
+      "total_shares": 123
     },
     {
       "name": "Company 11",
-      "value": 2861,
-      "clicks": 1,
-      "total_shares": 2400
+      "logo": "/static/logos/bitmato100.png",
+      "value": 2198,
+      "clicks": 0,
+      "total_shares": 2018
     },
     {
       "name": "Company 12",
-      "value": 1348,
-      "clicks": 0,
-      "total_shares": 1523
+      "logo": "/static/logos/bitmato100.png",
+      "value": 2615,
+      "clicks": 2,
+      "total_shares": 1549
     },
     {
       "name": "Company 13",
-      "value": 1971,
-      "clicks": 0,
-      "total_shares": 893
+      "logo": "/static/logos/bitmato100.png",
+      "value": 3217,
+      "clicks": 12,
+      "total_shares": 267
     }
   ],
-  [
-    {
-      "name": "John Doe",
-      "cash": 100000.0,
-      "portfolio_value": 0.0,
-      "holdings": {},
-      "history": {}
-    }
-  ]
+  []
 ]

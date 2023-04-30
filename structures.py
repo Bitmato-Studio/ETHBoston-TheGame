@@ -3,6 +3,7 @@ from dataclasses import dataclass, field, asdict
 @dataclass
 class Company:
     name: str    ## Name of the company
+    logo: str    ## The file path for the logo
     value: float ## Current price of the stock
     clicks: int  ## Total people who have ever clicked it
     total_shares: int ## Total shares
@@ -11,6 +12,7 @@ class Company:
     def from_dict(data:dict) -> object:
         return Company(
             data['name'],
+            data['logo'],
             data['value'],
             data['clicks'],
             data['total_shares']
@@ -27,6 +29,7 @@ class Player:
     ## What the player is currently holding
     ## (Name, total_shares)
     holdings: dict[tuple[str, int]] = field(default_factory=dict)
+    ## TODO: Implement this
     ## What the player has held
     ## (Name, bought_for, sold_for)
     history: dict[str, tuple[float, float]] = field(default_factory=dict)
@@ -35,9 +38,8 @@ class Player:
     def from_dict(data:dict) -> object:
         return Player(
             data['name'],
-            ## For some reason asdict converts everything to string :/
-            float(data['cash']),
-            float(data['portfolio_value']),
+            data['cash'],
+            data['portfolio_value'],
             data['holdings'],
             data['history']
         )

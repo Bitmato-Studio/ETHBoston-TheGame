@@ -27,7 +27,7 @@ class PersistentDataHandler:
                     
                     self.data = [company_data, player_data]
         
-        start_new_thread(self.write_handler, (10,))
+        start_new_thread(self.write_handler, (write_interval,))
         
     def get_player(self, name:str) -> Union[Player, NoneType]:
         return self.data[1].get(name, None)

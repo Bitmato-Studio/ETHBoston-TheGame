@@ -1,13 +1,14 @@
-from flask import Flask, jsonify, render_template, request, redirect, url_for, make_response
+from flask import Flask, jsonify, render_template, request, redirect, url_for, Response
 from datahandler import PersistentDataHandler
 from structures import Company, Player
+import mimetypes
 app = Flask(__name__)
 
 handler = PersistentDataHandler("somefile.json")
 
 # Initialize company data - FOR 14 Companies = 14 Sponsors
 import random
-[handler.add_company(f"Company {i}", random.randint(0, 5000), random.randint(0, 2500)) for i in range(0, 14)]
+[handler.add_company(f"Company {i}", '/static/logos/bitmato100.png' , random.randint(0, 5000), random.randint(0, 2500)) for i in range(0, 14)]
 
 @app.route('/') #authored by: @pshroff 
 def index():
@@ -35,6 +36,16 @@ def update_vote_count(company_name):
         # Return the updated vote count
         return company.clicks
     return None
+
+@app.route('/static/<static_type>/<filename>')
+def get_static(static_type:str, filename:str):
+    print(f"static/{static_type}/{filename}")
+    with open(f"./static/{static_type}/{filename}", 'rb') as reader:
+        data = reader.read()
+    
+    mimeType = mimetypes.guess_type(filename)[0]
+    
+    return Response(data, 200, mimetype=mimeType)
 
 @app.route("/login/<wallet>", methods=["POST"])
 def login(wallet:str):
