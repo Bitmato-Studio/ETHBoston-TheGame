@@ -83,6 +83,27 @@
       "value": 0.8328603918639682,
       "clicks": 0,
       "total_shares": 3000
+    },
+    {
+      "name": "MoonBeam",
+      "logo": "/static/logos/moonbeam100.png",
+      "value": 3.5648077170024024,
+      "clicks": 0,
+      "total_shares": 6000
+    },
+    {
+      "name": "Bitmatoes",
+      "logo": "/static/logos/bitmato100.png",
+      "value": 0.3951542539181736,
+      "clicks": 0,
+      "total_shares": 1500
+    },
+    {
+      "name": "bbu",
+      "logo": "/static/logos/bbu.png",
+      "value": 0.2670899135438097,
+      "clicks": 0,
+      "total_shares": 1500
     }
   ],
   [
